@@ -80,7 +80,8 @@ def enemy():
 		else:
 			print ("The monster attacked you before you had a chance and killed you.\nNot sure why I'm telling you this considering that you are dead!!")
 	else:
-		print ("I see you chose to be a chicken and not fight the monster.\nThe monster didn't care and attacked you anyways!!!\nYou got lucky tho and manged to get to the next room, you might not be this lucky next time.")
+		print ("I see you chose to be a chicken and not fight the monster.\nThe monster didn't care and attacked you anyways!!!")
+		print ("You got lucky tho and manged to get to the next room, you might not be this lucky next time.")
 		room()
 
 #Checker class to check the user's answer in order to make the next moves.
