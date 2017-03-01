@@ -1,9 +1,9 @@
 from random import sample, choice, randrange
 
-Sword = "By taking this sword, you have +5 damage now. Maybe it will be useful later on!!"
-Shield = "By taking this shield, you now have +5 defense. Might be useful in the near future!!"
-Potion = "This potion gives you +2 damage boost over your sword Damage if you have one!!"
-Book = "Now that you have read this book, you know more about defending. +2 to defense points on top of your Sheild defense, if you have one of course!!!!"
+Sword = "By taking this sword, you have +10 damage now. Maybe it will be useful later on!!"
+Shield = "By taking this shield, you now have +10 defense. Might be useful in the near future!!"
+Potion = "This potion gives you +5 damage boost over your sword Damage if you have one!!"
+Book = "Now that you have read this book, you know more about defending. +5 to defense points on top of your Sheild defense, if you have one of course!!!!"
 Script = "Now you know how to script, so go ahead and make your own game if you don't like mine."
 
 roomNum = [2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -18,9 +18,11 @@ swordDmg = len(playerSword)
 shieldBlock = len(playerShield)
 dmg = len(playerDmg)
 block = len(playerBlock)
-attack = int(randrange(0,101)) + int(swordDmg * 5) + int(dmg * 2)
-defense = int(randrange(1,101)) - int(shieldBlock * 5 ) - int(block * 2)
-
+attack = int(randrange(0,101)) + int(swordDmg * 10) + int(dmg * 5)
+defense = int(randrange(1,101)) - int(shieldBlock * 10 ) - int(block * 5)
+bossHealth = 200
+enemyHealth = randrange(50,151)
+			
 """
 Function to show the rules of the game.
 What's the game about you might ask, none of your business is the answer!!!!!!
@@ -40,27 +42,38 @@ def rules():
 def room():
 	if choice(roomNum) == 10:
 		print ("Congratulation, you have made it to room number 10.")
-		print ("You have the chance to attack the Monster and win the game.")
-		print ("The monster has 150")
+		print ("You have the chance to attack the Boss and win the game.")
+		print ("The Boss has 300 health.")
 		fight = input("Would you like to attack the monster? ")
 		if fight.lower() == "yes":
-			if attack >= 50:
-				print ()
+			if attack >= bossHealth / 2:
 				print ("Congratulations!!!! You did " + attack + "damage to the monster and killed it. You have finished the game like a badass you are!!!!")
-			elif defense < 50 and defense >= 25:
-				print (defense)
+			elif defense < bossHealth / 2 and defense >= int(bossHealth / 3):
 				print ("The monster attacked you before you had a chance, but you surviced with " + defense + " health and managed to get out of the room.\nCongratulations on finishing the game.")
 			else:
 				print ("The monster attacked you before you had a chance and killed you.\nNot sure why I'm telling you this considering that you are dead!!")
 		else:
-			print ("I see you chose to be a chicken and not fight the monster.\nThe monster didn't care tho, so he attacked you and killed you anyways!!!")
+			print ("I see you chose to be a chicken and not fight the monster.\nThe monster didn't care tho, so he attacked and killed you anyways!!!")
 	else:	
 		print ("You have entered room number: " + str(choice(roomNum)) + ", There are " + str(choice(roomDoors)) + " doors in this room.")
 		print ("These are the items available in this room: " + str(sample(roomObj, 2)))
 		obj = input("Which one of those items whould you like to interact with? ")
 		Checker().itemChecker(obj)
 		Checker().answerCheck()
-			
+
+def enemy():
+	print ("There seems to be an enemy in the room!!!!!\nWould you like to attack it?")
+	enemyFight = input("Would you like to attack the monster? ")
+	if enemyFight.lower() == "yes":
+		if attack >= int(enemyHealth / 2):
+			print ("Congratulations!!!! You did " + attack + "damage to the monster and killed it.\nNow you are free to go to the next room.")
+			room()
+		else:
+			print ("The monster attacked you before you had a chance and killed you.\nNot sure why I'm telling you this considering that you are dead!!")
+	else:
+		print ("I see you chose to be a chicken and not fight the monster.\nThe monster didn't care and attacked you anyways!!!\nYou got lucky tho and manged to get to the next room, you might not be this lucky next time.")
+		room()
+
 #Checker class to check the user's answer in order to make the next moves.
 class Checker:
 	def answerCheck(self):
