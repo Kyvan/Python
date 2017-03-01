@@ -1,28 +1,35 @@
 from random import sample, choice, randrange
-
-Sword = "By taking this sword, you have +10 damage now. Maybe it will be useful later on!!"
+# Items to be randomly generated in Rooms.
+Sword = "By taking this sword, you have +50 damage now. Maybe it will be useful later on!!"
 Shield = "By taking this shield, you now have +10 defense. Might be useful in the near future!!"
 Potion = "This potion gives you +5 damage boost over your sword Damage if you have one!!"
 Book = "Now that you have read this book, you know more about defending. +5 to defense points on top of your Sheild defense, if you have one of course!!!!"
 Script = "Now you know how to script, so go ahead and make your own game if you don't like mine."
 
+# Variables to be used in Room generation.
 roomNum = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 roomObj = ["Sword", "Shield", "Potion", "Book", "Script"]
 roomDoors = [2, 3]
+
+# Variables to keep track of player's choices, health, and damage output.
 playerChoice = []
 playerSword = set ()
 playerShield = set ()
-playerDmg = []
-playerBlock = []
-swordDmg = len(playerSword)
-shieldBlock = len(playerShield)
-dmg = len(playerDmg)
-block = len(playerBlock)
-attack = int(randrange(0,101)) + int(swordDmg * 10) + int(dmg * 5)
-defense = int(randrange(1,101)) - int(shieldBlock * 10 ) - int(block * 5)
-bossHealth = 200
-enemyHealth = randrange(50,151)
-			
+playerPotion = []
+playerBook = []
+playerHealth = 300
+playerDmg = 150
+swordDmg = int(len(playerSword) * 50)
+shieldBlock = int(len(playerShield) * 50)
+dmg = int(playerDmg) + randrange(0,51) + int(swordDmg) + int(len(playerPotion) * 5)
+block = int(playerHealth) + randrange(0,51) + int(shieldBlock) + int(len(playerBook) * 5)
+
+# Variables to be used by the Final Boss and Random enemies in rooms.
+bossDmg = randrange(700,801)
+bossHealth = 450
+enemyDmg = 400
+enemyHealth = randrange(100,201)
+
 """
 Function to show the rules of the game.
 What's the game about you might ask, none of your business is the answer!!!!!!
@@ -46,10 +53,10 @@ def room():
 		print ("The Boss has 300 health.")
 		fight = input("Would you like to attack the monster? ")
 		if fight.lower() == "yes":
-			if attack >= bossHealth / 2:
-				print ("Congratulations!!!! You did " + attack + "damage to the monster and killed it. You have finished the game like a badass you are!!!!")
-			elif defense < bossHealth / 2 and defense >= int(bossHealth / 3):
-				print ("The monster attacked you before you had a chance, but you surviced with " + defense + " health and managed to get out of the room.\nCongratulations on finishing the game.")
+			if dmg >= bossHealth / 2:
+				print ("Congratulations!!!! You did " + dmg + "damage to the monster and killed it. You have finished the game like a badass you are!!!!")
+			elif block < bossDmg / 2 and block >= int(bossDmg / 3):
+				print ("The monster attacked you before you had a chance, but you surviced with " + block + " health and managed to get out of the room.\nCongratulations on finishing the game.")
 			else:
 				print ("The monster attacked you before you had a chance and killed you.\nNot sure why I'm telling you this considering that you are dead!!")
 		else:
@@ -110,11 +117,11 @@ class Checker:
 			playerDmg.append(obj.lower())
 		elif obj.lower() == "book":
 			print (Book +  "\n")
-			playerBlock.append(obj.lower())
+			playerBook.append(obj.lower())
 		elif obj.lower() == "script":
 			print (Script + "\n")
 		else:
-			print ("Seems like you don't want to interact with any of the items. It's okay, that won't affect you at all in the future")
+			print ("Seems like you don't want to interact with any of the items. It's okay, that won't affect you at all in the future!!!!\n")
 
 print ("Welcome to hell!!!!\nWe are gonna have so much FUN!!!\n")	
 rules()
