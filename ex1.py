@@ -38,13 +38,13 @@ Now fuck off and play the damn game.
 """			
 def rules():
 	print ("These are the rules of the game, at any prompt, you can type \"rules\" to see them again.")
-	print ("1. There are 10 rooms and you start in room number 1.")
+	print ("1. There are 10 rooms and you could start in room any room you happen to spawn in.")
 	print ("2. Depending on the number of doors in the room, you can go \"Right\", \"Left\", or \"Up\".")
 	print ("3. You can revisit the previous room you were in by choosing \"Down\". Note that you can only go back to the previous room you were just in.")
 	print ("4. Some rooms have items in them, you can interact with them by typing the name of the item you want.")
 	print ("5. By typing anything besides the the stuff mentioned above, you can quit the game.")
 	print ("6. After reaching room number 10, the game is over and you will win if you manage to defeat the boss in that room\n\n")
-	Checker().answerCheck()
+	room()
 
 #Room function to generate the rooms the player is going to be in.
 def room():
@@ -84,8 +84,10 @@ def enemy():
 		print ("You got lucky tho and manged to get to the next room, you might not be this lucky next time.")
 		room()
 
-#Checker class to check the user's answer in order to make the next moves.
+#Checker class to check the user's answer.
 class Checker:
+	
+	# Function 
 	def answerCheck(self):
 		answer = input("Where do you wanna go? ")
 		playerChoice.append(answer)
