@@ -70,6 +70,7 @@ def room():
 		Checker().itemChecker(obj)
 		Checker().answerCheck()
 
+# Function to generate a random enemy to be used in a random room.
 def enemy():
 	print ("There seems to be an enemy in the room!!!!!\nWould you like to attack it?")
 	enemyFight = input("Would you like to attack the monster? ")
@@ -87,7 +88,7 @@ def enemy():
 #Checker class to check the user's answer.
 class Checker:
 	
-	# Function 
+	# Function to check and see what direction the user wants to go to. 
 	def answerCheck(self):
 		answer = input("Where do you wanna go? ")
 		playerChoice.append(answer)
@@ -101,7 +102,8 @@ class Checker:
 			room()
 		else:
 			print ("I guess you missed the instructions!!!!\nYou won't get a chance to fix this issue, so you can start from scratch if you want")
-			
+	
+	# Function to check what item the user wants to interact with.
 	def itemChecker(self, obj):
 		if obj.lower() == "sword":
 			print (Sword + "\n")
