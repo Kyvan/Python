@@ -1,9 +1,10 @@
 from random import sample, choice, randrange
+
 # Items to be randomly generated in Rooms.
 Sword = "By taking this sword, you have +50 damage now. Maybe it will be useful later on!!"
 Shield = "By taking this shield, you now have +10 defense. Might be useful in the near future!!"
-Potion = "This potion gives you +5 damage boost over your sword Damage if you have one!!"
-Book = "Now that you have read this book, you know more about defending. +5 to defense points on top of your Sheild defense, if you have one of course!!!!"
+Potion = "This potion gives you +5 damage boost!!"
+Book = "Now that you have read this book, you know more about defending. +5 to defense!!!!"
 Script = "Now you know how to script, so go ahead and make your own game if you don't like mine."
 
 # Variables to be used in Room generation.
@@ -54,13 +55,14 @@ def room():
 		fight = input("Would you like to attack the monster? ")
 		if fight.lower() == "yes":
 			if dmg >= bossHealth / 2:
-				print ("Congratulations!!!! You did " + dmg + "damage to the monster and killed it. You have finished the game like a badass you are!!!!")
+				print ("Congratulations!!!! You did " + str(dmg) + "damage to the monster and killed it. You have finished the game like a badass you are!!!!")
 			elif block < bossDmg / 2 and block >= int(bossDmg / 3):
-				print ("The monster attacked you before you had a chance, but you surviced with " + block + " health and managed to get out of the room.\nCongratulations on finishing the game.")
+				print ("The monster attacked you before you had a chance, but you surviced with " + str(block) + " health and managed to get out of the room.\nCongratulations on finishing the game.")
 			else:
 				print ("The monster attacked you before you had a chance and killed you.\nNot sure why I'm telling you this considering that you are dead!!")
 		else:
 			print ("I see you chose to be a chicken and not fight the monster.\nThe monster didn't care tho, so he attacked and killed you anyways!!!")
+		print ("These are the choices you made while playing the game: " + str(playerChoice))
 	else:	
 		print ("You have entered room number: " + str(choice(roomNum)) + ", There are " + str(choice(roomDoors)) + " doors in this room.")
 		print ("These are the items available in this room: " + str(sample(roomObj, 2)))
@@ -85,17 +87,15 @@ def enemy():
 class Checker:
 	def answerCheck(self):
 		answer = input("Where do you wanna go? ")
+		playerChoice.append(answer)
 		if answer.lower() == "rules":
 			rules()
 		elif answer.lower() == "left" or answer.lower() == "l":
 			room()
-			playerChoice.append(answer)
 		elif answer.lower() == "right" or answer.lower() == "r":
 			room()
-			playerChoice.append(answer)
 		elif answer.lower() == "up" or answer.lower() == "u":
 			room()
-			playerChoice.append(answer)
 		else:
 			print ("I guess you missed the instructions!!!!\nYou won't get a chance to fix this issue, so you can start from scratch if you want")
 			
@@ -114,7 +114,7 @@ class Checker:
 				print ("You already have a Shield, so you can't keep this one.\n")
 		elif obj.lower() == "potion":
 			print (Potion + "\n")
-			playerDmg.append(obj.lower())
+			playerPotion.append(obj.lower())
 		elif obj.lower() == "book":
 			print (Book +  "\n")
 			playerBook.append(obj.lower())
