@@ -10,7 +10,6 @@ Script = "Now you know how to script, so go ahead and make your own game if you 
 # Variables to be used in Room generation.
 roomNum = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 roomObj = ["Sword", "Shield", "Potion", "Book", "Script"]
-roomDoors = [2, 3]
 
 # Variables to keep track of player's choices, health, and damage output.
 playerChoice = []
