@@ -25,9 +25,9 @@ dmg = int(playerDmg) + randrange(0,51) + int(swordDmg) + int(len(playerPotion) *
 block = int(playerHealth) + randrange(0,51) + int(shieldBlock) + int(len(playerBook) * 5)
 
 # Variables to be used by the Final Boss and Random enemies in rooms.
-bossDmg = randrange(700,801)
-bossHealth = 300
-monsterDmg = 400
+bossDmg = randrange(300,500)
+bossHealth = 275
+monsterDmg = 200
 monsterHealth = randrange(100,201)
 
 """
@@ -38,7 +38,7 @@ Now fuck off and play the damn game.
 def rules():
 	print ("These are the rules of the game, at any prompt, you can type \"rules\" to see them again.")
 	print ("1. There are 10 rooms and you could start in room any room you happen to spawn in.")
-	print ("2. You have the choice of going to \"Right\" or \"Left\" in each room.")
+	print ("2. You have the choice of going to \"Right\" or \"Up\" in each room.")
 	print ("3. Some rooms have items in them, you can interact with them by typing the name of the item you want.")
 	print ("4. By typing anything besides the the stuff mentioned above, you can quit the game.")
 	print ("5. After reaching room number 10, the game is over and you will win if you manage to defeat the boss in that room\n\n")
@@ -54,8 +54,8 @@ def room():
 		if bossFight.lower() == "yes":
 			if dmg > bossHealth:
 				print ("Congratulations!!!! You did " + str(dmg) + " damage to the final boss and killed it. You have finished the game like a badass you are!!!!")
-			elif block < bossDmg / 2 and block >= int(bossDmg / 3):
-				print ("The final boos attacked you before you had a chance, but you surviced with " + str(bossDmg - block) + " health and managed to get out of the room.\nCongratulations on finishing the game.")
+			elif int(block / 2) > bossDmg:
+				print ("The final boos attacked you before you had a chance, but you surviced with " + str(block - bossDmg) + " health and managed to get out of the room.\nCongratulations on finishing the game.")
 			else:
 				print ("The final boss attacked you before you had a chance and killed you.\nNot sure why I'm telling you this considering that you are dead!!")
 		else:
@@ -64,13 +64,13 @@ def room():
 	elif choice(roomNum) % 2 == 1:
 		monster()
 	else:
-		print ("You have entered room number: " + str(choice(roomNum)) + ", There are " + str(choice(roomDoors)) + " doors in this room.")
+		print ("You have entered room number: " + str(choice(roomNum)))
 		Checker().itemChecker()
 		Checker().answerCheck()
 		
 # Function to generate a random monster to be used in a random room.
 def monster():
-	print ("You have entered room number: " + str(choice(roomNum)) + ", There are " + str(choice(roomDoors)) + " doors in this room.")
+	print ("You have entered room number: " + str(choice(roomNum)))
 	print ("There seems to be a monster in this room. You HAVE to fight it in order to be able to intract with the items in the room!!")
 	monsterFight = input("So, do you wanna attack it or just move on??? ")
 	if monsterFight.lower() == "yes":
@@ -78,13 +78,13 @@ def monster():
 			print ("Congratulations!!!! You did " + str(dmg) + " damage to the monster and killed it.")
 			Checker().itemChecker()
 			Checker().answerCheck()
-		elif block < monsterDmg / 2 and block >= int(monsterDmg / 3):   
-			print ("The monster attacked you before you had a chance, but you surviced with " + str(monsterDmg - block) + " and managed to get away from it. Quickly, " + room())
+		elif int(block / 2) >= monsterDmg:   
+			print ("The monster attacked you before you had a chance, but you surviced with " + str(block - monsterDmg) + " and managed to get away from it. Quickly, " + room())
 		else:
 			print ("The monster attacked you before you had a chance and killed you.\nNot sure why I'm telling you this considering that you are dead!!")
 	else:
 		print ("I see you chose to be a chicken and not fight the monster.\nThe monster didn't care and attacked you anyways!!!")
-		print ("You got lucky tho and manged to get to the next room, you might not be this lucky next time.")
+		print ("You got lucky tho and manged to get to the next room, you might not be this lucky next time.\n")
 		room()
 
 #Checker class to check the user's answer.
@@ -96,7 +96,7 @@ class Checker:
 		playerChoice.append(answer)
 		if answer.lower() == "rules":
 			rules()
-		elif answer.lower() == "left" or answer.lower() == "l" or answer.lower() == "right" or answer.lower() == "r":
+		elif answer.lower() == "up" or answer.lower() == "u" or answer.lower() == "right" or answer.lower() == "r":
 			room()
 		else:
 			print ("I guess you missed the instructions!!!!\nYou won't get a chance to fix this issue, so you can start from scratch if you want")
