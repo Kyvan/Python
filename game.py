@@ -37,7 +37,7 @@ Now fuck off and play the damn game.
 """			
 def rules():
 	print ("These are the rules of the game, at any prompt, you can type \"rules\" to see them again.")
-	print ("1. There are 10 rooms and you could start in room any room you happen to spawn in.")
+	print ("1. There are 10 rooms and you could start in any room you happen to spawn in.")
 	print ("2. You have the choice of going to \"Right\" or \"Up\" in each room.")
 	print ("3. Some rooms have items in them, you can interact with them by typing the name of the item you want.")
 	print ("4. By typing anything besides the the stuff mentioned above, you can quit the game.")
