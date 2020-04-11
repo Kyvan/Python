@@ -8,7 +8,7 @@ Book = "Now that you have read this book, you know more about defending. +5 to d
 Script = "Now you know how to script, so go ahead and make your own game if you don't like mine.\nYour health is also replenished."
 
 # Variables to be used in Room generation.
-roomNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+roomNum = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 roomObj = ["Sword", "Shield", "Potion", "Book", "Script"]
 
 # Variables to keep track of player's choices, health, and damage output.
@@ -18,10 +18,10 @@ playerShield = set ()
 playerPotion = []
 playerBook = []
 playerHealth = 450
-playerDmg = 150
+playerDmg = 150 + randrange(0,50)
 swordDmg = int(len(playerSword) * 50)
 shieldBlock = int(len(playerShield) * 50)
-dmg = int(playerDmg) + randrange(0,50) + int(swordDmg) + int(len(playerPotion) * 5)
+dmg = int(playerDmg)  + int(swordDmg) + int(len(playerPotion) * 5)
 block = int(playerHealth) + randrange(0,51) + int(shieldBlock) + int(len(playerBook) * 5)
 
 # Variables to be used by the Final Boss and Random enemies in rooms.
