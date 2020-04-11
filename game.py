@@ -8,7 +8,7 @@ Book = "Now that you have read this book, you know more about defending. +5 to d
 Script = "Now you know how to script, so go ahead and make your own game if you don't like mine.\nYour health is also replenished."
 
 # Variables to be used in Room generation.
-roomNum = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+roomNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 roomObj = ["Sword", "Shield", "Potion", "Book", "Script"]
 
 # Variables to keep track of player's choices, health, and damage output.
@@ -17,11 +17,11 @@ playerSword = set ()
 playerShield = set ()
 playerPotion = []
 playerBook = []
-playerHealth = 300
+playerHealth = 450
 playerDmg = 150
 swordDmg = int(len(playerSword) * 50)
 shieldBlock = int(len(playerShield) * 50)
-dmg = int(playerDmg) + randrange(0,51) + int(swordDmg) + int(len(playerPotion) * 5)
+dmg = int(playerDmg) + randrange(0,50) + int(swordDmg) + int(len(playerPotion) * 5)
 block = int(playerHealth) + randrange(0,51) + int(shieldBlock) + int(len(playerBook) * 5)
 
 # Variables to be used by the Final Boss and Random enemies in rooms.
@@ -40,7 +40,7 @@ def rules():
 	print ("1. There are 10 rooms and you could start in any room you happen to spawn in.")
 	print ("2. You have the choice of going to \"Right\" or \"Up\" in each room.")
 	print ("3. Some rooms have items in them, you can interact with them by typing the name of the item you want.")
-	print ("4. By typing anything besides the the stuff mentioned above, you can quit the game.")
+	print ("4. By typing anything besides the stuff mentioned above, you can quit the game.")
 	print ("5. After reaching room number 10, the game is over and you will win if you manage to defeat the boss in that room\n\n")
 	room()
 
@@ -51,7 +51,7 @@ def room():
 		print ("You have the chance to attack the Boss and win the game.")
 		print ("The Boss has 300 health.")
 		bossFight = input("Would you like to attack the boss? ")
-		if bossFight.lower() == "yes":
+		if bossFight.lower() == "yes" or bossFight.lower() == "y":
 			if dmg > bossHealth:
 				print ("Congratulations!!!! You did " + str(dmg) + " damage to the final boss and killed it. You have finished the game like a badass you are!!!!")
 			elif int(block / 2) > bossDmg:
@@ -73,7 +73,7 @@ def monster():
 	print ("You have entered room number: " + str(choice(roomNum)))
 	print ("There seems to be a monster in this room. You HAVE to fight it in order to be able to intract with the items in the room!!")
 	monsterFight = input("So, do you wanna attack it or just move on??? ")
-	if monsterFight.lower() == "yes":
+	if monsterFight.lower() == "yes" or monsterFight.lower() == "y":
 		if dmg >= monsterHealth:
 			print ("Congratulations!!!! You did " + str(dmg) + " damage to the monster and killed it.")
 			Checker().itemChecker()
