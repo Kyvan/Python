@@ -1,5 +1,4 @@
 # Libraries needed
-import os
 import subprocess
 import sys
 import getpass
@@ -15,10 +14,10 @@ def createUser():
 
     try:
         # Excute useradd command using subprocess
-        subprocess.run(['useradd', '-p', password, '-G', '-md', '/user/',username, 'sudo', username])
+        subprocess.run(['useradd', '-p', password, username])
 
     except:
-        print (f"Failed to add user/")
+        print ("Failed to add user")
         sys.exit(1)
 
 createUser()
