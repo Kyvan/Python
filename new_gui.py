@@ -14,14 +14,36 @@ class MyStream(QtCore.QObject):
 class MyWindow(QtWidgets.QWidget):
         def __init__(self, parent=None):
                 super(MyWindow, self).__init__(parent)
+                
+                width = 500
+                height = 500
+                self.setFixedWidth(width)
+                self.setFixedHeight(height)
+                
+                self.setStyleSheet("background-color: black;")
+                self.setStyleSheet
 
                 self.pushButtonPrint = QtWidgets.QPushButton(self)
                 self.pushButtonPrint.setText("Click me for Passwords!!")
+                self.pushButtonPrint.setStyleSheet("QPushButton {"
+                                                        "background-color : red;"
+                                                   "}"
+                                                   "QPushButton::hover {"
+                                                        "background-color : lightgreen"
+                                                   "}"
+                                                   "QPushButton::pressed {"
+                                                        "background-color : orange"
+                                                   "}"
+                                                   )
 
                 self.pushButtonPrint.clicked.connect(self.the_button_was_clicked)
 
                 self.textEdit = QtWidgets.QTextEdit(self)
-
+                self.textEdit.setStyleSheet("QTextEdit {"
+                                                "color : yellow"
+                                           "}"
+                                           )
+                
                 self.layoutVertical = QtWidgets.QVBoxLayout(self)
                 self.layoutVertical.addWidget(self.pushButtonPrint)
                 self.layoutVertical.addWidget(self.textEdit)
@@ -67,7 +89,7 @@ class MyWindow(QtWidgets.QWidget):
 if __name__ == "__main__":
         app = QtWidgets.QApplication(sys.argv)
         app.setApplicationDisplayName("My Passwords!!")
-
+        
         main = MyWindow()
         main.show()
 
