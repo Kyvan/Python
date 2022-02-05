@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import random, string, sys
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QApplication, QMainWindow, QSizePolicy
 from random_words import RandomWords
 from random import randint
 class MyStream(QtCore.QObject):
@@ -18,15 +19,14 @@ class MyWindow(QtWidgets.QWidget):
                 width = 500
                 height = 500
                 self.setFixedWidth(width)
-                self.setFixedHeight(height)
+                self.setMinimumHeight(height)
                 
                 self.setStyleSheet("background-color: black;")
-                self.setStyleSheet
 
                 self.pushButtonPrint = QtWidgets.QPushButton(self)
                 self.pushButtonPrint.setText("Click me for Passwords!!")
                 self.pushButtonPrint.setStyleSheet("QPushButton {"
-                                                        "background-color : red;"
+                                                        "background-color : blue;"
                                                    "}"
                                                    "QPushButton::hover {"
                                                         "background-color : lightgreen"
@@ -36,7 +36,23 @@ class MyWindow(QtWidgets.QWidget):
                                                    "}"
                                                    )
 
+
+                self.pushButtonPrint2 = QtWidgets.QPushButton(self)
+                self.pushButtonPrint2.setText("Click me to exit")
+                self.pushButtonPrint2.setStyleSheet("QPushButton {"
+                                                        "background-color : red;"
+                                                   "}"
+                                                   "QPushButton::hover {"
+                                                        "background-color : purple"
+                                                   "}"
+                                                   "QPushButton::pressed {"
+                                                        "background-color : yellow"
+                                                   "}"
+                                                   )
+
+                
                 self.pushButtonPrint.clicked.connect(self.the_button_was_clicked)
+                self.pushButtonPrint2.clicked.connect(self.exit_was_clicked)
 
                 self.textEdit = QtWidgets.QTextEdit(self)
                 self.textEdit.setStyleSheet("QTextEdit {"
@@ -44,9 +60,19 @@ class MyWindow(QtWidgets.QWidget):
                                            "}"
                                            )
                 
+
                 self.layoutVertical = QtWidgets.QVBoxLayout(self)
+                self.layoutVertical.addWidget(self.pushButtonPrint2)
                 self.layoutVertical.addWidget(self.pushButtonPrint)
+                # self.layoutVertical.setAlignment(self.pushButtonPrint, QtCore.Qt.AlignmentFlag.AlignLeft)
+                # self.layoutVertical.setAlignment(self.pushButtonPrint2, QtCore.Qt.AlignmentFlag.AlignRight)
                 self.layoutVertical.addWidget(self.textEdit)
+
+
+        @QtCore.pyqtSlot()
+        def exit_was_clicked(self):
+                sys.exit(app.exec_())
+
 
         @QtCore.pyqtSlot()
         def the_button_was_clicked(self):
