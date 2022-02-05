@@ -1,6 +1,8 @@
 #!/usr/bin/python
+import random, string, sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from random_words import RandomWords
+from random import randint
 class MyStream(QtCore.QObject):
         message = QtCore.pyqtSignal(str)
         def __init__(self, parent=None):
@@ -26,10 +28,6 @@ class MyWindow(QtWidgets.QWidget):
 
         @QtCore.pyqtSlot()
         def the_button_was_clicked(self):
-                from random_words import RandomWords
-                from random import randint
-                import random, string
-
                 rw = RandomWords()
 
 
@@ -67,9 +65,6 @@ class MyWindow(QtWidgets.QWidget):
 
 
 if __name__ == "__main__":
-        import sys
-        from PyQt5.QtWidgets import QWidget, QApplication
-
         app = QtWidgets.QApplication(sys.argv)
         app.setApplicationDisplayName("My Passwords!!")
 
