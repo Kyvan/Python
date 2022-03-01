@@ -20,8 +20,6 @@ class MyWindow(QtWidgets.QWidget):
                 height = 500
                 self.setFixedWidth(width)
                 self.setMinimumHeight(height)
-                
-                self.setGeometry(0, 0, 500, 500)
 
                 self.setStyleSheet("background-color: black;")
 
