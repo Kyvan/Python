@@ -21,10 +21,13 @@ class MyWindow(QtWidgets.QWidget):
                 self.setFixedWidth(width)
                 self.setMinimumHeight(height)
                 
+                self.setGeometry(0, 0, 500, 500)
+
                 self.setStyleSheet("background-color: black;")
 
                 self.pushButtonPrint = QtWidgets.QPushButton(self)
                 self.pushButtonPrint.setText("Click me for Passwords!!")
+                self.pushButtonPrint.resize(375, 25)
                 self.pushButtonPrint.setStyleSheet("QPushButton {"
                                                         "background-color : blue;"
                                                    "}"
@@ -39,6 +42,8 @@ class MyWindow(QtWidgets.QWidget):
 
                 self.pushButtonPrint2 = QtWidgets.QPushButton(self)
                 self.pushButtonPrint2.setText("Click me to exit")
+                self.pushButtonPrint2.resize(125, 25)
+                self.pushButtonPrint2.move(376, 0)
                 self.pushButtonPrint2.setStyleSheet("QPushButton {"
                                                         "background-color : red;"
                                                    "}"
@@ -55,19 +60,13 @@ class MyWindow(QtWidgets.QWidget):
                 self.pushButtonPrint2.clicked.connect(self.exit_was_clicked)
 
                 self.textEdit = QtWidgets.QTextEdit(self)
+                self.textEdit.move(0, 25)
+                self.textEdit.resize(500, 475)
                 self.textEdit.setStyleSheet("QTextEdit {"
                                                 "color : yellow"
                                            "}"
                                            )
                 
-
-                self.layoutVertical = QtWidgets.QVBoxLayout(self)
-                self.layoutVertical.addWidget(self.pushButtonPrint2)
-                self.layoutVertical.addWidget(self.pushButtonPrint)
-                # self.layoutVertical.setAlignment(self.pushButtonPrint, QtCore.Qt.AlignmentFlag.AlignLeft)
-                # self.layoutVertical.setAlignment(self.pushButtonPrint2, QtCore.Qt.AlignmentFlag.AlignRight)
-                self.layoutVertical.addWidget(self.textEdit)
-
 
         @QtCore.pyqtSlot()
         def exit_was_clicked(self):
