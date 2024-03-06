@@ -10,8 +10,8 @@ secondInterface = 19
 aeInterface = "ae0"
 
 # Asking for Gateway Address
+nativeVLAN = input("What is the Native VLAN? ")
 defaultGW = input("What is the Default Gateway? ") 
-nativeVLAN = input("What is the Native VLAN? ") 
 
 
 # def to print ERROR messages
