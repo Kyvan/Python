@@ -8,7 +8,7 @@ Book = "Now that you have read this book, you know more about defending. +5 to d
 Script = "Now you know how to script, so go ahead and make your own game if you don't like mine."
 
 # Variables to be used in Room generation.
-roomNums = [1, 2]
+roomNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 roomnumber = 0
 roomObj = ["Weapon", "Armor", "Potion", "Book", "Script"]
 
@@ -35,7 +35,7 @@ monsterHealth = randrange(100, 201)
 # Room function to generate the rooms the player is going to be in.
 def room():
     roomnumber = choice(roomNums)
-    if roomnumber == 2:
+    if roomnumber == 10:
         print("Congratulation, you have made it to room number 10.")
         print("You have the chance to attack the Boss and win the game.")
         print("The Boss has 300 health.")
@@ -73,7 +73,7 @@ Now fuck off and play the damn game.
 def rules():
     print("These are the rules of the game, at any prompt, you can type \"rules\" to see them again.")
     print("1. There are 10 rooms and you could start in any room you happen to spawn in.")
-    print("2. You have the choice of going to \"Right\" or \"Up\" in each room.")
+    print("2. You have the choice of going \"Right\" or \"Up\" in each room.")
     print("3. Some rooms have items in them, you can interact with them by typing the name of the item you want.")
     print("4. By typing anything besides the stuff mentioned above, you can quit the game.")
     print("5. After reaching room number 10, the game is over.")
@@ -85,7 +85,7 @@ def rules():
 def monster():
     print("You have entered room number: " + str(roomnumber))
     print("There seems to be a monster in this room. You must fight it so you can intract with the items in the room!!")
-    monsterfight = input("So, do you wanna attack it or just move on??? ")
+    monsterfight = input("So, do you wanna attack it??? ")
     if monsterfight.lower() == "yes" or monsterfight.lower() == "y":
         dmg = int(playerDmg) + int(len(playerWeapon) * weaponDmg) + int(len(playerPotion) * 5)
         if dmg >= monsterHealth:
@@ -102,7 +102,7 @@ def monster():
     else:
         print("I see you chose to be a chicken and not fight the monster.")
         print("The monster didn't care and attacked you anyways!!!")
-        print("You got lucky tho and manged to get to the next room, you might not be this lucky next time.\n")
+        print("You got lucky and manged to get to the next room, you might not be this lucky next time.\n")
         room()
 
 
