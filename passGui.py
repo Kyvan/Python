@@ -2,8 +2,6 @@
 import random
 import string
 import sys
-# from types import DynamicClassAttribute
-# from PyQt5.QtWidgets import QApplication, QMainWindow, QSizePolicy
 from PyQt5 import QtCore, QtGui, QtWidgets
 from random_word import RandomWords
 from random import randint
