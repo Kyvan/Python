@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+
+
 import random
 import string
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from random_word import RandomWords
+from random_words import RandomWords
 from random import randint
 
 
@@ -93,10 +95,10 @@ class MyWindow(QtWidgets.QWidget):
         rw = RandomWords()
 
         def word_generator():
-            word1 = rw.get_random_word()
-            word2 = rw.get_random_word()
-            word3 = rw.get_random_word()
-            word4 = rw.get_random_word()
+            word1 = rw.random_word(letter=None)
+            word2 = rw.random_word(letter=None)
+            word3 = rw.random_word(letter=None)
+            word4 = rw.random_word(letter=None)
             pass_phrase(word1, word2, word3, word4)
 
         def pass_phrase(_word1, _word2, _word3, _word4):
@@ -130,8 +132,8 @@ class MyWindow(QtWidgets.QWidget):
         rw = RandomWords()
 
         def word_generator():
-            word1 = rw.get_random_word()
-            word2 = rw.get_random_word()
+            word1 = rw.random_word(letter=None)
+            word2 = rw.random_word(letter=None)
             pass_phrase(word1, word2)
 
         def pass_phrase(_word1, _word2):
