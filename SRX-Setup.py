@@ -77,5 +77,4 @@ while vlanID1 < 9:
         vlanID2 += 1
         unitNumb += 1
     vlanID2 = 1
-    vlanID1 += 1
-    
+    vlanID1 += 1 

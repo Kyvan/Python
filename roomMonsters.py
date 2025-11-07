@@ -6,4 +6,3 @@ class Monster:
         troll = 
         vampire = 
         zombie = 
-    
