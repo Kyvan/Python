@@ -1,12 +1,13 @@
-from random_words import RandomWords
-from random import randint
-from colorama import Fore, Style
+#!/home/kyvan/python_env/bin/python
+
 import random
 import string
 import sys
+from random_words import RandomWords
+from random import randint
+from colorama import Fore, Style
 
 rw = RandomWords()
-
 
 def word_generator():
    word1 = rw.random_word(letter=None)
@@ -14,7 +15,6 @@ def word_generator():
    word3 = rw.random_word(letter=None)
    word4 = rw.random_word(letter=None)
    pass_phrase(word1, word2, word3, word4)
-
 
 def pass_phrase(_word1, _word2, _word3, _word4):
    pass1 = f'{_word1.capitalize()}{randint(10, 99)}{_word3.capitalize()}{random.choice(string.punctuation)}{_word2.capitalize()}{randint(10, 99)}{_word4.capitalize()}'

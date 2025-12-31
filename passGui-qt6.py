@@ -1,6 +1,5 @@
 #!/home/kyvan/python_env/bin/python
 
-
 import random
 import string
 import sys
@@ -8,9 +7,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from random_words import RandomWords
 from random import randint
 
-
 rw = RandomWords()
-
 
 class MyStream(QtCore.QObject):
     message = QtCore.pyqtSignal(str)
@@ -20,7 +17,6 @@ class MyStream(QtCore.QObject):
 
     def write(self, message):
         self.message.emit(str(message))
-
 
 class MyWindow(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -158,7 +154,6 @@ class MyWindow(QtWidgets.QWidget):
     def on_my_stream_message(self, message):
         self.textEdit.moveCursor(QtGui.QTextCursor.MoveOperation.EndOfBlock)
         self.textEdit.insertPlainText(message)
-
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
