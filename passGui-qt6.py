@@ -9,6 +9,8 @@ from random_words import RandomWords
 from random import randint
 
 
+rw = RandomWords()
+
 class MyStream(QtCore.QObject):
     message = QtCore.pyqtSignal(str)
 
@@ -92,13 +94,12 @@ class MyWindow(QtWidgets.QWidget):
 
     @QtCore.pyqtSlot()
     def the_complex_button_was_clicked(self):
-        rw = RandomWords()
 
         def word_generator():
-            word1 = rw.random_word(letter=None)
-            word2 = rw.random_word(letter=None)
-            word3 = rw.random_word(letter=None)
-            word4 = rw.random_word(letter=None)
+            word1 = rw.random_word()
+            word2 = rw.random_word()
+            word3 = rw.random_word()
+            word4 = rw.random_word()
             pass_phrase(word1, word2, word3, word4)
 
         def pass_phrase(_word1, _word2, _word3, _word4):
@@ -129,11 +130,10 @@ class MyWindow(QtWidgets.QWidget):
 
     @QtCore.pyqtSlot()
     def the_simple_button_was_clicked(self):
-        rw = RandomWords()
 
         def word_generator():
-            word1 = rw.random_word(letter=None)
-            word2 = rw.random_word(letter=None)
+            word1 = rw.random_word()
+            word2 = rw.random_word()
             pass_phrase(word1, word2)
 
         def pass_phrase(_word1, _word2):
@@ -155,7 +155,7 @@ class MyWindow(QtWidgets.QWidget):
 
     @QtCore.pyqtSlot(str)
     def on_my_stream_message(self, message):
-        self.textEdit.moveCursor(QtGui.QTextCursor.End)
+        self.textEdit.moveCursor(QtGui.QTextCursor.MoveOperation.EndOfBlock)
         self.textEdit.insertPlainText(message)
 
 
