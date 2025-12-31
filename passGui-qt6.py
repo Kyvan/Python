@@ -11,6 +11,7 @@ from random import randint
 
 rw = RandomWords()
 
+
 class MyStream(QtCore.QObject):
     message = QtCore.pyqtSignal(str)
 
@@ -100,9 +101,9 @@ class MyWindow(QtWidgets.QWidget):
             word2 = rw.random_word()
             word3 = rw.random_word()
             word4 = rw.random_word()
-            pass_phrase(word1, word2, word3, word4)
+            pass_phrase_complex(word1, word2, word3, word4)
 
-        def pass_phrase(_word1, _word2, _word3, _word4):
+        def pass_phrase_complex(_word1, _word2, _word3, _word4):
             pass1 = f'{_word1.capitalize()}{randint(10, 99)}{_word3.capitalize()}{random.choice(string.punctuation)}\
 {_word2.capitalize()}{randint(10, 99)}{_word4.capitalize()}'
             pass2 = f'{randint(10, 99)}{_word1.capitalize()}{_word3.capitalize()}{random.choice(string.punctuation)}\
@@ -134,9 +135,9 @@ class MyWindow(QtWidgets.QWidget):
         def word_generator():
             word1 = rw.random_word()
             word2 = rw.random_word()
-            pass_phrase(word1, word2)
+            pass_phrase_simple(word1, word2)
 
-        def pass_phrase(_word1, _word2):
+        def pass_phrase_simple(_word1, _word2):
             pass1 = f'{_word1.capitalize()}{randint(10, 99)}{_word2.capitalize()}{random.choice(string.punctuation)}'
             pass2 = f'{random.choice(string.punctuation)}{_word1.capitalize()}{randint(10, 99)}{_word2.capitalize()}'
             pass3 = f'{_word2.capitalize()}{random.choice(string.punctuation)}{_word1.capitalize()}{randint(10, 99)}'
