@@ -4,7 +4,7 @@
 import random
 import string
 import sys
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt6 import QtCore, QtGui, QtWidgets
 from random_words import RandomWords
 from random import randint
 
@@ -170,4 +170,4 @@ if __name__ == "__main__":
     myStream.message.connect(main.on_my_stream_message)
 
     sys.stdout = myStream
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
