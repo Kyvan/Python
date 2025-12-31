@@ -88,7 +88,7 @@ class MyWindow(QtWidgets.QWidget):
 
     @QtCore.pyqtSlot()
     def exit_was_clicked(self):
-        sys.exit(app.exec_())
+        sys.exit(app.exec())
 
     @QtCore.pyqtSlot()
     def the_complex_button_was_clicked(self):
