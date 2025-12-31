@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/home/kyvan/python_env/bin/python
 import random, string, sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QSizePolicy
