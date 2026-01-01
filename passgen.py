@@ -8,32 +8,40 @@ from random import randint
 from colorama import Fore, Style
 
 rw = RandomWords()
+words = []
+passwords = []
 
-def word_generator():
-   word1 = rw.random_word(letter=None)
-   word2 = rw.random_word(letter=None)
-   word3 = rw.random_word(letter=None)
-   word4 = rw.random_word(letter=None)
-   pass_phrase(word1, word2, word3, word4)
+def error_exit(error_message):
+    print(error_message)
+    sys.exit(1)
 
-def pass_phrase(_word1, _word2, _word3, _word4):
-   pass1 = f'{_word1.capitalize()}{randint(10, 99)}{_word3.capitalize()}{random.choice(string.punctuation)}{_word2.capitalize()}{randint(10, 99)}{_word4.capitalize()}'
-   pass2 = f'{randint(10, 99)}{_word1.capitalize()}{_word3.capitalize()}{random.choice(string.punctuation)}{_word2.capitalize()}{randint(10, 99)}{_word4.capitalize()}'
-   pass3 = f'{_word3.capitalize()}{random.choice(string.punctuation)}{_word1.capitalize()}{randint(10, 99)}{_word2.capitalize()}{randint(10, 99)}{_word4.capitalize()}'
-   pass4 = f'{_word1.capitalize()}{random.choice(string.punctuation)}{_word3.capitalize()}{randint(10, 99)}{_word2.capitalize()}{randint(10, 99)}{_word4.capitalize()}'
-   pass5 = f'{_word1.capitalize()}{random.choice(string.punctuation)}{_word2.capitalize()}{randint(10, 99)}{randint(10, 99)}{_word4.capitalize()}'
-   pass6 = f'{_word1.capitalize()}{randint(10, 99)}{_word2.capitalize()}{randint(10, 99)}{random.choice(string.punctuation)}{_word4.capitalize()}'
-   pass7 = f'{_word1.capitalize()}{randint(10, 99)}{random.choice(string.punctuation)}{randint(10, 99)}{_word2.capitalize()}{_word3.capitalize()}'
-   pass8 = f'{_word1.capitalize()}{randint(10, 99)}{randint(10, 99)}{random.choice(string.punctuation)}{_word2.capitalize()}{_word3.capitalize()}'
-   pass9 = f'{_word1.capitalize()}{_word2.capitalize()}{randint(10, 99)}{random.choice(string.punctuation)}{randint(10, 99)}{random.choice(string.punctuation)}'
+def word_generator(numb_of_words):
+    for passes in range(numb_of_words):
+        for numb in range(10):
+            word = rw.random_word()
+            words.append(word.capitalize())
 
-   passwords = [pass1, pass2, pass3, pass4, pass5, pass6, pass7, pass8, pass9]
-   print (f'{Fore.YELLOW}{random.choice(passwords)}{Style.RESET_ALL}')
+        pass_phrase(words)
 
+def pass_phrase(*args):
+    for numb in range(25):
+        password = f'{random.choice(words)}{randint(10, 99)}{random.choice(words)}{random.choice(string.punctuation)}{random.choice(words)}{randint(10, 99)}{random.choice(words)}'
+        passwords.append(password)
+
+    print (f'{Fore.YELLOW}{random.choice(passwords)}{Style.RESET_ALL}')
+
+def is_integer(user_input):
+    try:
+        # Attempt to convert the input to an integer
+        int(user_input)
+        word_generator(int(user_input))
+    except ValueError:
+        # If a ValueError is raised, the input is not a valid integer
+        error_exit("Usage: python3 passGenTest.py [number]")
 
 if len(sys.argv) == 2:
-   for x in range(int(sys.argv[1])):
-      word_generator()
+    is_integer(sys.argv[1])
+elif len(sys.argv) == 1:
+    word_generator(1)
 else:
-   for x in range(5):
-      word_generator()
+    error_exit("Usage: python3 passGenTest.py [number]")
