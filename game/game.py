@@ -8,22 +8,22 @@ Book = "Now that you have read this book, you know more about defending. +5 to d
 Script = "Now you know how to script, so go ahead and make your own game if you don't like mine."
 
 # Variables to be used in Room generation.
-roomNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-roomnumber = 0
-roomObj = ["Weapon", "Armor", "Potion", "Book", "Script"]
+room_nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+room_number = 0
+room_obj = ["Weapon", "Armor", "Potion", "Book", "Script"]
 
 # Variables to keep track of player's choices, health, and damage output.
-roomChoice = []
-playerChoice = []
-playerWeapon = []
-playerArmor = []
-playerPotion = []
-playerBook = []
-playerHealth = 450
-playerDmg = 150 + randrange(0, 50)
-weaponDmg = int(len(playerWeapon) * 15)
-armorBlock = int(len(playerArmor) * 15)
-block = int(playerHealth) + randrange(0, 50) + int(armorBlock) + int(len(playerBook) * 5)
+room_choice = []
+player_choice = []
+player_weapon = []
+player_armor = []
+player_potion = []
+player_book = []
+player_health = 450
+player_dmg = 150 + randrange(0, 50)
+weapon_dmg = int(len(player_weapon) * 15)
+armor_block = int(len(player_armor) * 15)
+block = int(player_health) + randrange(0, 50) + int(armor_block) + int(len(player_book) * 5)
 
 # Variables to be used by the Final Boss and Random enemies in rooms.
 bossDmg = randrange(300, 500)
@@ -34,19 +34,19 @@ monsterHealth = randrange(100, 201)
 
 # Room function to generate the rooms the player is going to be in.
 def room():
-    roomnumber = choice(roomNums)
-    if roomnumber == 10:
+    room_number = choice(room_nums)
+    if room_number == 10:
         print("Congratulation, you have made it to room number 10.")
         print("You have the chance to attack the Boss and win the game.")
         print("The Boss has 300 health.")
         bossfight = input("Would you like to attack the boss? ")
         if bossfight.lower() == "yes" or bossfight.lower() == "y":
-            dmg = int(playerDmg) + int(len(playerWeapon) * weaponDmg) + int(len(playerPotion) * 5)
+            dmg = int(player_dmg) + int(len(player_weapon) * weapon_dmg) + int(len(player_potion) * 5)
             if dmg > bossHealth:
                 print("Congratulations!!!! You did " + str(
                     dmg) + " damage to the final boss and killed it. You have finished the game like a badass you are")
             elif int(block / 2) > bossDmg:
-                print("The final boos attacked you before you had a chance, but you surviced with " + str(
+                print("The final boos attacked you before you had a chance, but you survived with " + str(
                     block - bossDmg) + " health got out of the room.\nCongratulations on finishing the game.")
             else:
                 print(
@@ -54,13 +54,13 @@ def room():
         else:
             print("I see you chose to be a chicken and not fight the final boss.")
             print("The final boss didn't care, so he attacked and killed you anyways!!!")
-        print("These are the choices you made while playing the game: " + str(playerChoice))
-    elif roomnumber % 2 == 0:
+        print("These are the choices you made while playing the game: " + str(player_choice))
+    elif room_number % 2 == 0:
         monster()
     else:
-        print("You have entered room number: " + str(roomnumber))
-        itemchecker()
-        answercheck()
+        print("You have entered room number: " + str(room_number))
+        item_checker()
+        answer_check()
 
 
 """
@@ -83,17 +83,17 @@ def rules():
 
 # Function to generate a random monster to be used in a random room.
 def monster():
-    print("You have entered room number: " + str(roomnumber))
-    print("There seems to be a monster in this room. You must fight it so you can intract with the items in the room!!")
-    monsterfight = input("So, do you wanna attack it??? ")
-    if monsterfight.lower() == "yes" or monsterfight.lower() == "y":
-        dmg = int(playerDmg) + int(len(playerWeapon) * weaponDmg) + int(len(playerPotion) * 5)
+    print("You have entered room number: " + str(room_number))
+    print("There seems to be a monster in this room. You must fight it so you can interact with the items in the room!!")
+    monster_fight = input("So, do you wanna attack it??? ")
+    if monster_fight.lower() == "yes" or monster_fight.lower() == "y":
+        dmg = int(player_dmg) + int(len(player_weapon) * weapon_dmg) + int(len(player_potion) * 5)
         if dmg >= monsterHealth:
             print("Congratulations!!!! You did " + str(dmg) + " damage to the monster and killed it.")
-            itemchecker()
-            answercheck()
+            item_checker()
+            answer_check()
         elif int(block / 2) >= monsterDmg:
-            print("The monster attacked you before you had a chance, but you surviced with " + str(
+            print("The monster attacked you before you had a chance, but you survived with " + str(
                 block - monsterDmg) + " and managed to get away from it. Quickly, ")
             room()
         else:
@@ -107,9 +107,9 @@ def monster():
 
 
 # Function to check and see what direction the user wants to go to.
-def answercheck():
+def answer_check():
     answer = input("Where do you wanna go? ")
-    playerChoice.append(answer)
+    player_choice.append(answer)
     if answer.lower() == "rules":
         rules()
     elif answer.lower() == "up" or answer.lower() == "u" or answer.lower() == "right" or answer.lower() == "r":
@@ -120,18 +120,18 @@ def answercheck():
 
 
 # Function to check what item the user wants to interact with.
-def itemchecker():
-    obj = input("Which one of these items " + str(sample(roomObj, 2)) + " whould you like to interact with? ")
+def item_checker():
+    obj = input("Which one of these items " + str(sample(room_obj, 2)) + " would you like to interact with? ")
     if obj.lower() == "weapon":
         print(Weapon + "\n")
     elif obj.lower() == "armor":
         print(Armor + "\n")
     elif obj.lower() == "potion":
         print(Potion + "\n")
-        playerPotion.append(obj.lower())
+        player_potion.append(obj.lower())
     elif obj.lower() == "book":
         print(Book + "\n")
-        playerBook.append(obj.lower())
+        player_book.append(obj.lower())
     elif obj.lower() == "script":
         print(Script + "\n")
     else:
