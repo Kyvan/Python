@@ -8,34 +8,6 @@ from random_words import RandomWords
 from random import randint
 
 rw = RandomWords()
-words = []
-passwords_simple = []
-passwords_complex = []
-
-def word_generator(numb_of_words):
-    for passes in range(numb_of_words):
-        for numb in range(10):
-            word = rw.random_word()
-            words.append(word.capitalize())
-        if numb_of_words == 10:
-            pass_phrase_simple(words)
-        elif numb_of_words == 5:
-            pass_phrase_complex(words)
-
-def pass_phrase_simple(*args):
-    for numb in range(25):
-        password = f'{random.choice(words)}{randint(10, 99)}{random.choice(words)}{random.choice(string.punctuation)}'
-        passwords_simple.append(password)
-
-    print(random.choice(passwords_simple))
-
-def pass_phrase_complex(*args):
-    for numb in range(25):
-        password = f'{random.choice(words)}{randint(10, 99)}{random.choice(words)}{random.choice(string.punctuation)}{random.choice(words)}{randint(10, 99)}{random.choice(words)}'
-        passwords_complex.append(password)
-
-    print(random.choice(passwords_complex))
-
 
 class MyStream(QtCore.QObject):
     message = QtCore.pyqtSignal(str)
@@ -119,11 +91,64 @@ class MyWindow(QtWidgets.QWidget):
 
     @QtCore.pyqtSlot()
     def the_complex_button_was_clicked(self):
-        word_generator(5)
+
+        def word_generator():
+            word1 = rw.random_word()
+            word2 = rw.random_word()
+            word3 = rw.random_word()
+            word4 = rw.random_word()
+            pass_phrase_complex(word1, word2, word3, word4)
+
+        def pass_phrase_complex(_word1, _word2, _word3, _word4):
+            pass1 = f'{_word1.capitalize()}{randint(10, 99)}{_word3.capitalize()}{random.choice(string.punctuation)}\
+{_word2.capitalize()}{randint(10, 99)}{_word4.capitalize()}'
+            pass2 = f'{randint(10, 99)}{_word1.capitalize()}{_word3.capitalize()}{random.choice(string.punctuation)}\
+{_word2.capitalize()}{randint(10, 99)}{_word4.capitalize()}'
+            pass3 = f'{_word3.capitalize()}{random.choice(string.punctuation)}{_word1.capitalize()}{randint(10, 99)}\
+{_word2.capitalize()}{randint(10, 99)}{_word4.capitalize()}'
+            pass4 = f'{_word1.capitalize()}{random.choice(string.punctuation)}{_word3.capitalize()}{randint(10, 99)}\
+{_word2.capitalize()}{randint(10, 99)}{_word4.capitalize()}'
+            pass5 = f'{_word1.capitalize()}{random.choice(string.punctuation)}{_word2.capitalize()}{randint(10, 99)}\
+{randint(10, 99)}{_word4.capitalize()}'
+            pass6 = f'{_word1.capitalize()}{randint(10, 99)}{_word2.capitalize()}{randint(10, 99)}\
+{random.choice(string.punctuation)}{_word4.capitalize()}'
+            pass7 = f'{_word1.capitalize()}{randint(10, 99)}{random.choice(string.punctuation)}{randint(10, 99)}\
+{_word2.capitalize()}{_word3.capitalize()}'
+            pass8 = f'{_word1.capitalize()}{randint(10, 99)}{randint(10, 99)}{random.choice(string.punctuation)}\
+{_word2.capitalize()}{_word3.capitalize()}'
+            pass9 = f'{_word1.capitalize()}{_word2.capitalize()}{randint(10, 99)}{random.choice(string.punctuation)}\
+{randint(10, 99)}{random.choice(string.punctuation)}{_word4.capitalize()}'
+
+            passwords = [pass1, pass2, pass3, pass4, pass5, pass6, pass7, pass8, pass9]
+            print(random.choice(passwords))
+
+        for x in range(10):
+            word_generator()
 
     @QtCore.pyqtSlot()
     def the_simple_button_was_clicked(self):
-        word_generator(10)
+
+        def word_generator():
+            word1 = rw.random_word()
+            word2 = rw.random_word()
+            pass_phrase_simple(word1, word2)
+
+        def pass_phrase_simple(_word1, _word2):
+            pass1 = f'{_word1.capitalize()}{randint(10, 99)}{_word2.capitalize()}{random.choice(string.punctuation)}'
+            pass2 = f'{random.choice(string.punctuation)}{_word1.capitalize()}{randint(10, 99)}{_word2.capitalize()}'
+            pass3 = f'{_word2.capitalize()}{random.choice(string.punctuation)}{_word1.capitalize()}{randint(10, 99)}'
+            pass4 = f'{randint(10, 99)}{_word2.capitalize()}{random.choice(string.punctuation)}{_word1.capitalize()}'
+            pass5 = f'{_word1.capitalize()}{_word2.capitalize()}{randint(10, 99)}{random.choice(string.punctuation)}'
+            pass6 = f'{random.choice(string.punctuation)}{_word1.capitalize()}{_word2.capitalize()}{randint(10, 99)}'
+            pass7 = f'{randint(10, 99)}{random.choice(string.punctuation)}{_word1.capitalize()}{_word2.capitalize()}'
+            pass8 = f'{random.choice(string.punctuation)}{randint(10, 99)}{_word1.capitalize()}{_word2.capitalize()}'
+            pass9 = f'{_word2.capitalize()}{random.choice(string.punctuation)}{randint(10, 99)}{_word1.capitalize()}'
+
+            passwords = [pass1, pass2, pass3, pass4, pass5, pass6, pass7, pass8, pass9]
+            print(random.choice(passwords))
+
+        for x in range(10):
+            word_generator()
 
     @QtCore.pyqtSlot(str)
     def on_my_stream_message(self, message):
