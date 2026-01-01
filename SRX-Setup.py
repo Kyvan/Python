@@ -1,4 +1,4 @@
-# Libraries to imprt
+# Libraries to import
 import re
 
 # Variables to be used later on
@@ -21,7 +21,7 @@ def error(self):
 
 
 def ipchecker(arg1):
-    # Checks for validfity of the IP based on the below regex comparison
+    # Checks for validity of the IP based on the below regex comparison
     gateway = re.match(r"(25[0-5]|2[0-4][0-9]|1?[0-9]{1,2}\.){3}(25[0-5]|2[0-4][0-9]|1?[0-9]{1,2})", arg1)
 
     # Errors out if it not a valid IP
@@ -32,8 +32,8 @@ def ipchecker(arg1):
 ipchecker(defaultGW)
 
 # Commands needed for setting up the " + str(aeInterface)" interface
-print("set interfaxes xe-0/0/" + str(firstInterface) + " gigether-options 802.3ad " + str(aeInterface))
-print("set interfaxes xe-0/0/" + str(secondInterface) + " gigether-options 802.3ad " + str(aeInterface))
+print("set interfaces xe-0/0/" + str(firstInterface) + " gigether-options 802.3ad " + str(aeInterface))
+print("set interfaces xe-0/0/" + str(secondInterface) + " gigether-options 802.3ad " + str(aeInterface))
 print("set interfaces " + str(aeInterface) + " flexible-vlan-tagging")
 print("set interfaces " + str(aeInterface) + " native-vlan-id " + nativeVLAN)
 print("set interfaces " + str(aeInterface) + " aggregated-ether-options link-speed 10g")
