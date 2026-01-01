@@ -94,7 +94,7 @@ def monster():
             answer_check()
         elif int(block / 2) >= monsterDmg:
             print("The monster attacked you before you had a chance, but you survived with " + str(
-                block - monsterDmg) + " and managed to get away from it. Quickly, ")
+                block - monsterDmg) + " health and managed to get away from it.")
             room()
         else:
             print("The monster attacked you before you had a chance and killed you.")
