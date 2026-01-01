@@ -1,4 +1,4 @@
-from random import sample, randrange
+from random import sample
 
 # Class for defining different types of items in each room
 class Items:
