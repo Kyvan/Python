@@ -1,3 +1,2 @@
+randomwords
 PyQt6
-random_words
-random

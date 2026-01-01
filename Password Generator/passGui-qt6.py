@@ -2,7 +2,6 @@
 
 import random
 import string
-import subprocess
 import sys
 from PyQt6 import QtCore, QtGui, QtWidgets
 from random_words import RandomWords
@@ -12,15 +11,6 @@ rw = RandomWords()
 words = []
 passwords_simple = []
 passwords_complex = []
-
-def install_dependencies():
-    """Installs packages listed in requirements.txt."""
-    try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
-        print("All dependencies installed successfully.")
-    except subprocess.CalledProcessError as e:
-        print(f"Error installing dependencies: {e}")
-        sys.exit(1)
 
 def word_generator(numb_of_words):
     for passes in range(numb_of_words):
