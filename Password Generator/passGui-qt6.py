@@ -18,18 +18,18 @@ def word_generator(numb_of_words):
             word = rw.random_word()
             words.append(word.capitalize())
         if numb_of_words == 10:
-            pass_phrase_simple(words)
+            pass_phrase_simple()
         elif numb_of_words == 5:
-            pass_phrase_complex(words)
+            pass_phrase_complex()
 
-def pass_phrase_simple(*args):
+def pass_phrase_simple():
     for numb in range(25):
         password = f'{random.choice(words)}{randint(10, 99)}{random.choice(words)}{random.choice(string.punctuation)}'
         passwords_simple.append(password)
 
     print(random.choice(passwords_simple))
 
-def pass_phrase_complex(*args):
+def pass_phrase_complex():
     for numb in range(25):
         password = f'{random.choice(words)}{randint(10, 99)}{random.choice(words)}{random.choice(string.punctuation)}{random.choice(words)}{randint(10, 99)}{random.choice(words)}'
         passwords_complex.append(password)
