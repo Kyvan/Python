@@ -3,17 +3,20 @@
 import random
 import string
 import sys
-from random_words import RandomWords
 from random import randint
+
 from colorama import Fore, Style
+from random_words import RandomWords
 
 rw = RandomWords()
 words = []
 passwords = []
 
+
 def error_exit(error_message):
     print(error_message)
     sys.exit(1)
+
 
 def word_generator(numb_of_words):
     for passes in range(numb_of_words):
@@ -23,12 +26,14 @@ def word_generator(numb_of_words):
 
         pass_phrase(words)
 
+
 def pass_phrase(*args):
     for numb in range(25):
         password = f'{random.choice(words)}{randint(10, 99)}{random.choice(words)}{random.choice(string.punctuation)}{random.choice(words)}{randint(10, 99)}{random.choice(words)}'
         passwords.append(password)
 
-    print (f'{Fore.YELLOW}{random.choice(passwords)}{Style.RESET_ALL}')
+    print(f'{Fore.YELLOW}{random.choice(passwords)}{Style.RESET_ALL}')
+
 
 def is_integer(user_input):
     try:
@@ -38,6 +43,7 @@ def is_integer(user_input):
     except ValueError:
         # If a ValueError is raised, the input is not a valid integer
         error_exit("Usage: python3 passGenTest.py [number]")
+
 
 if len(sys.argv) == 2:
     is_integer(sys.argv[1])
