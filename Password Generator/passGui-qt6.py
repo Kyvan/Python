@@ -3,38 +3,36 @@
 import random
 import string
 import sys
+from random import randint
+
 from PyQt6 import QtCore, QtGui, QtWidgets
 from random_words import RandomWords
-from random import randint
 
 rw = RandomWords()
 words = []
 passwords_simple = []
 passwords_complex = []
 
+
 def word_generator(numb_of_words):
     for passes in range(numb_of_words):
         for numb in range(10):
             word = rw.random_word()
             words.append(word.capitalize())
-        if numb_of_words == 10:
-            pass_phrase_simple()
-        elif numb_of_words == 5:
-            pass_phrase_complex()
+        pass_phrase(numb_of_words)
 
-def pass_phrase_simple():
-    for numb in range(25):
-        password = f'{random.choice(words)}{randint(10, 99)}{random.choice(words)}{random.choice(string.punctuation)}'
-        passwords_simple.append(password)
 
-    print(random.choice(passwords_simple))
-
-def pass_phrase_complex():
-    for numb in range(25):
-        password = f'{random.choice(words)}{randint(10, 99)}{random.choice(words)}{random.choice(string.punctuation)}{random.choice(words)}{randint(10, 99)}{random.choice(words)}'
-        passwords_complex.append(password)
-
-    print(random.choice(passwords_complex))
+def pass_phrase(_numb_of_words):
+    if _numb_of_words == 10:
+        for numb in range(25):
+            password = f'{random.choice(words)}{randint(10, 99)}{random.choice(words)}{random.choice(string.punctuation)}'
+            passwords_simple.append(password)
+        print(random.choice(passwords_simple))
+    elif _numb_of_words == 5:
+        for numb in range(25):
+            password = f'{random.choice(words)}{randint(10, 99)}{random.choice(words)}{random.choice(string.punctuation)}{random.choice(words)}{randint(10, 99)}{random.choice(words)}'
+            passwords_complex.append(password)
+        print(random.choice(passwords_complex))
 
 
 class MyStream(QtCore.QObject):
@@ -45,6 +43,7 @@ class MyStream(QtCore.QObject):
 
     def write(self, message):
         self.message.emit(str(message))
+
 
 class MyWindow(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -129,6 +128,7 @@ class MyWindow(QtWidgets.QWidget):
     def on_my_stream_message(self, message):
         self.textEdit.moveCursor(QtGui.QTextCursor.MoveOperation.EndOfBlock)
         self.textEdit.insertPlainText(message)
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
