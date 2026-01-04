@@ -1,6 +1,8 @@
 #!/home/kyvan/python_env/bin/python
 
-class InputChecker:
+
+# Class to
+class InputValidator:
     def is_integer(self, user_input):
         try:
             # Attempt to check if input to an integer
