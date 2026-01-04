@@ -3,7 +3,6 @@
 
 def is_integer(user_input):
     if user_input.isdigit():
-        print(f"You entered the integer: {user_input}")
         return True
     else:
         # If a ValueError is raised, the input is not a valid integer
@@ -14,7 +13,6 @@ def is_integer(user_input):
 def is_string(user_input):
     # Attempt to check if input is a string
     if user_input.isalpha():
-        print(f"You entered the string: {user_input}")
         return True
     else:
         print("Usage: String is expected")
@@ -23,7 +21,6 @@ def is_string(user_input):
 
 def is_white_space(user_input):
     if user_input.isspace():
-        print(f"You entered White Space(s): {user_input}")
         return True
     else:
         print("Usage: White Space is expected")
@@ -31,13 +28,13 @@ def is_white_space(user_input):
 
 
 def is_float(user_input):
-    if user_input.isdigit() or user_input.isalpha() or user_input.isspace():
+    if user_input.isdigit():
         print("Usage: Float is expected")
-        return True
+        return False
     else:
         try:
             float(user_input)
-            print(f"You entered the float: {user_input}")
+            return True
         except ValueError:
             print("Usage: Float is expected")
 
@@ -47,7 +44,7 @@ def is_float_no_output(user_input):
         float(user_input)
         return True
     except ValueError:
-        return None
+        return False
 
 
 def is_special_character(user_input):
@@ -55,5 +52,4 @@ def is_special_character(user_input):
         print("Usage: Special Character is expected")
         return True
     else:
-        print(f"You entered the Special Character: {user_input}")
         return True
