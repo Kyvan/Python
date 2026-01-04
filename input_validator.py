@@ -1,7 +1,7 @@
 #!/home/kyvan/python_env/bin/python
 
 
-# Class to
+# Class to validate input from users
 class InputValidator:
     def is_integer(self, user_input):
         try:
