@@ -38,11 +38,11 @@ def pass_phrase(*args):
 def is_integer(user_input):
     try:
         # Attempt to convert the input to an integer
-        int(user_input)
+        user_input.isdigit()
         word_generator(int(user_input))
     except ValueError:
         # If a ValueError is raised, the input is not a valid integer
-        error_exit("Usage: python3 passGenTest.py [number]")
+        error_exit("Usage: passgen [number]")
 
 
 if len(sys.argv) == 2:
@@ -50,4 +50,4 @@ if len(sys.argv) == 2:
 elif len(sys.argv) == 1:
     word_generator(1)
 else:
-    error_exit("Usage: python3 passGenTest.py [number]")
+    error_exit("Usage: passgen [number]")
