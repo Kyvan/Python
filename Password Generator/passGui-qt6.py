@@ -1,4 +1,4 @@
-#!/home/kyvan/python_env/bin/python
+#!/home/ky/python_env/bin/python
 
 import random
 import string

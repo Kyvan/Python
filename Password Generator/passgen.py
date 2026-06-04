@@ -1,4 +1,4 @@
-#!/home/kyvan/python_env/bin/python
+#!/home/ky/python_env/bin/python
 
 import random
 import string
@@ -32,7 +32,7 @@ def pass_phrase(*args):
         password = f'{random.choice(words)}{randint(10, 99)}{random.choice(words)}{random.choice(string.punctuation)}{random.choice(words)}{randint(10, 99)}{random.choice(words)}'
         passwords.append(password)
 
-    print(f'{Fore.YELLOW}{random.choice(passwords)}{Style.RESET_ALL}')
+    print(f'{Style.BRIGHT}{Fore.LIGHTCYAN_EX}{random.choice(passwords)}{Style.RESET_ALL}')
 
 
 def is_integer(user_input):

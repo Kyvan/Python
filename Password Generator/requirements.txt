@@ -1,2 +1,3 @@
 randomwords
 PyQt6
+colorama
